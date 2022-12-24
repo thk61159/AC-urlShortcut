@@ -1,6 +1,7 @@
 //////////require//////////
 const express = require('express')
 const { engine } = require('express-handlebars')
+require('./config/mongoose')
 
 
 //////////setting//////////
