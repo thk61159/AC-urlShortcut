@@ -2,18 +2,18 @@
   <img src='https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png'
     class='card-img-top' alt='JSUT AN IMAGE' />
   <div class='card-body'>
-    <form>
+    <form action="/" method="POST">
       <div class='form-group d-flex flex-column mx-auto'>
-        <label for='exampleInputEmail1' style='display: block;' class='mx-auto'>URL Shortcut Generator</label>
-        <input type='email' class='form-control mt-2' id='exampleInputEmail1' aria-describedby='emailHelp'
-          placeholder='請輸入網址...' />
+        <label for='originalUrl' style='display: block;' class='mx-auto'>URL Shortcut Generator</label>
+        <input type='text' class='form-control mt-2' id='originalUrl' name="originalUrl" aria-describedby='emailHelp'
+          placeholder='請輸入網址...' value="{{originalUrl}}"/>
         <button type='submit' class='btn btn-primary mt-3'>Submit</button>
       </div>
     </form>
     <div class='mt-4'>
       <div class='form-group d-flex flex-column mx-auto'>
-        <label for='exampleInputEmail1' style='display: block;' class='mx-auto'>URL Shortcut It's Here!</label>
-        <input type='email' class='form-control mt-2' id='exampleInputEmail1' aria-describedby='emailHelp' value="123456test" disabled />
+        <label for='shortcutUrl' style='display: block;' class='mx-auto'>URL Shortcut It's Here!</label>
+        <input type='text' class='form-control mt-2' id='shortcutUrl' aria-describedby='emailHelp' value="{{#if error}}錯誤{{/if}}123456test" disabled />
         <button class='btn btn-primary mt-3 shortURL' data-id="123456test">Copy</button>
       </div>
     </div>
