@@ -1,34 +1,20 @@
 <div class='card mx-auto border-light' style='width: 20rem; outline: 0;'>
-  <img
-    src='https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png'
-    class='card-img-top'
-    alt='JSUT AN IMAGE'
-  />
+  <img src='https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png'
+    class='card-img-top' alt='JSUT AN IMAGE' />
   <div class='card-body'>
-    <form class="d-flex">
+    <form>
       <div class='form-group d-flex flex-column mx-auto'>
-        <label for='exampleInputEmail1'>URL Shortcut Generator</label>
-        <input
-          type='email'
-          class='form-control mt-3'
-          id='exampleInputEmail1'
-          aria-describedby='emailHelp'
-          placeholder='請輸入網址...'
-        />
+        <label for='exampleInputEmail1' style='display: block;' class='mx-auto'>URL Shortcut Generator</label>
+        <input type='email' class='form-control mt-2' id='exampleInputEmail1' aria-describedby='emailHelp'
+          placeholder='請輸入網址...' />
         <button type='submit' class='btn btn-primary mt-3'>Submit</button>
       </div>
     </form>
-     <div class="d-flex mt-5">
+    <div class='mt-4'>
       <div class='form-group d-flex flex-column mx-auto'>
-        <label for='exampleInputEmail1'>URL Shortcut It's Here!</label>
-        <input
-          type='email'
-          class='form-control mt-3'
-          id='exampleInputEmail1'
-          aria-describedby='emailHelp'
-          disabled
-        />
-        <button class='btn btn-primary mt-3'>Copy</button>
+        <label for='exampleInputEmail1' style='display: block;' class='mx-auto'>URL Shortcut It's Here!</label>
+        <input type='email' class='form-control mt-2' id='exampleInputEmail1' aria-describedby='emailHelp' value="123456test" disabled />
+        <button class='btn btn-primary mt-3 shortURL' data-id="123456test">Copy</button>
       </div>
     </div>
   </div>
