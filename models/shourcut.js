@@ -5,7 +5,7 @@ const shortcutSchema = new Schema({
     type: String,
     required: true,
   },
-  shortUrl: {
+  shortUrlId: {
     type: String,
   },
 });

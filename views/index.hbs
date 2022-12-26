@@ -5,7 +5,7 @@
     <form action="/" method="POST">
       <div class='form-group d-flex flex-column mx-auto'>
         <label for='originalUrl' style='display: block;' class='mx-auto'>URL Shortcut Generator</label>
-        <input type='text' class='form-control mt-2' id='originalUrl' name="originalUrl" aria-describedby='emailHelp'
+        <input type='url' class='form-control mt-2' id='originalUrl' name="originalUrl" aria-describedby='emailHelp'
           placeholder='請輸入網址...' value="{{originalUrl}}"/>
         <button type='submit' class='btn btn-primary mt-3'>Submit</button>
       </div>
@@ -13,8 +13,8 @@
     <div class='mt-4'>
       <div class='form-group d-flex flex-column mx-auto'>
         <label for='shortcutUrl' style='display: block;' class='mx-auto'>URL Shortcut It's Here!</label>
-        <input type='text' class='form-control mt-2' id='shortcutUrl' aria-describedby='emailHelp' value="{{#if error}}錯誤{{/if}}123456test" disabled />
-        <button class='btn btn-primary mt-3 shortURL' data-id="123456test">Copy</button>
+        <a href="{{shotrcutUrl}}" target="_blank"><input type='text' class='form-control mt-2' id='shortcutUrl' aria-describedby='emailHelp' value="{{shotrcutUrl}}" disabled /></a>
+        <button class='btn btn-primary mt-3 shortURL' data-id={{shotrcutUrl}}>Copy</button>
       </div>
     </div>
   </div>
