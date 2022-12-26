@@ -2,7 +2,7 @@
 const express = require('express');
 const { engine } = require('express-handlebars');
 require('./config/mongoose');
-const shortUrl = require('./models/shourcut');
+const shortUrl = require('./models/shortcut');
 const axios = require('axios');
 //////////setting//////////
 const app = express();
@@ -24,15 +24,6 @@ app.get('/', (req, res) => {
         let id = String(e[0]._id).slice(18, 24);
         if (e.length) {
           shotrcutUrl = `http://localhost:3000/${id}`;
-          if (!e[0].shortUrlId) {
-            shortUrl
-              .findById(e[0]._id)
-              .then((e) => {
-                e.shortUrlId = id;
-                e.save();
-              })
-              .catch((err) => console.log('新增短id失敗'));
-          }
         }
         res.render('index', { originalUrl, shotrcutUrl });
         originalUrl = '';
@@ -58,11 +49,22 @@ app.post('/', (req, res) => {
         .find({ originalUrl: originalUrl })
         .lean()
         .then((e) => {
-          if (e.length === 0) {
-            shortUrl.create({ originalUrl });
+          if (!e.length) {
+            return shortUrl.create({ originalUrl });
           } else {
             console.log('此檔案已存在');
           }
+        })
+        .then(() => {
+          shortUrl
+            .findOne({ originalUrl: originalUrl })
+            .then((e) => {
+              console.log(e);
+              let id = String(e._id).slice(18, 24);
+              e.shortUrlId = id;
+              e.save();
+            })
+            .catch((err) => console.log('新增短id失敗', err));
         })
         .catch((err) => console.log('重更頁面失敗'))
     )
@@ -81,7 +83,7 @@ app.get('/:id', (req, res) => {
     .findOne({ shortUrlId: id })
     .lean()
     .then((e) => {
-      res.redirect(e.originalUrl)
+      res.redirect(e.originalUrl);
     })
     .catch((err) => console.log('短網址失效', err));
 });

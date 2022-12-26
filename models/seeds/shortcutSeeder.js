@@ -1,4 +1,4 @@
-const shortUrl = require('../shourcut');
+const shortUrl = require('../shortcut');
 const testUrl = [
   'https://www.google.com',
   'https://www.facebook.com',
@@ -11,7 +11,8 @@ const db = require('../../config/mongoose');
 // });
 db.once('open', () => {
   console.log('seeder connect db');
-  testUrl.forEach((e) => shortUrl.create({ originalUrl: e }));
+testUrl.forEach((e) => shortUrl.create({ originalUrl: e }));
+  
 
   console.log('Done');
 });
