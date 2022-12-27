@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
       .find({ originalUrl: originalUrl })
       .lean()
       .then((e) => {
-        let id = String(e[0]._id).slice(18, 24);
+        let id = String(e[0]._id).slice(19, 24);
         if (e.length) {
           shotrcutUrl = `http://localhost:3000/${id}`;
         }
@@ -53,7 +53,7 @@ router.post('/', (req, res) => {
             .findOne({ originalUrl: originalUrl })
             .then((e) => {
               if (!e.shortUrlId) {
-                let id = String(e._id).slice(18, 24);
+                let id = String(e._id).slice(19, 24);
                 e.shortUrlId = id;
                 e.save();
               }
