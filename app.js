@@ -62,10 +62,11 @@ app.post('/', (req, res) => {
           shortUrl
             .findOne({ originalUrl: originalUrl })
             .then((e) => {
-              console.log(e);
-              let id = String(e._id).slice(18, 24);
-              e.shortUrlId = id;
-              e.save();
+              if (!e.shortUrlId) {
+                let id = String(e._id).slice(18, 24);
+                e.shortUrlId = id;
+                e.save();
+              }
             })
             .catch((err) => console.log('新增短id失敗', err));
         })
