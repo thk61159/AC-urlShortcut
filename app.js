@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 //////////controller//////////
 let originalUrl = '';
 let shotrcutUrl = '';
+
 app.get('/', (req, res) => {
   if (originalUrl) {
     shortUrl
@@ -49,6 +50,7 @@ app.post('/', (req, res) => {
         .find({ originalUrl: originalUrl })
         .lean()
         .then((e) => {
+          //如果沒資料則新增資料到資料庫
           if (!e.length) {
             return shortUrl.create({ originalUrl });
           } else {
@@ -56,6 +58,7 @@ app.post('/', (req, res) => {
           }
         })
         .then(() => {
+          //利用新增完的資料_id末六碼
           shortUrl
             .findOne({ originalUrl: originalUrl })
             .then((e) => {
@@ -70,8 +73,10 @@ app.post('/', (req, res) => {
     )
     .then(() => res.redirect('/')) //3.重更頁面
     .catch((err) => {
-      shotrcutUrl = '錯誤';
-      res.render('index', { originalUrl, shotrcutUrl });
+      //如果是無法連線的網址render畫面提示錯誤
+      let wrongUrl = 'wrongUrl';
+      res.render('index', { originalUrl, shotrcutUrl, wrongUrl });
+      originalUrl = '';
       console.log('axios失敗', err);
     });
 });
