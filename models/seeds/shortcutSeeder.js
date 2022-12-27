@@ -11,8 +11,7 @@ const db = require('../../config/mongoose');
 // });
 db.once('open', () => {
   console.log('seeder connect db');
-testUrl.forEach((e) => shortUrl.create({ originalUrl: e }));
-  
+  testUrl.forEach((e) => shortUrl.create({ originalUrl: e }));
 
   console.log('Done');
 });

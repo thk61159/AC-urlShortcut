@@ -15,4 +15,4 @@ db.once('open', () => {
   mongoose.set('debug', true);
 });
 
-module.exports = db
+module.exports = db;
