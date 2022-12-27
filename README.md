@@ -13,7 +13,7 @@
 ## 如何使用
 1. 開啟終端機(terminal)，輸入如下將專案複製到電腦中
 ```shell
- git clone https://github.com/thk61159/AC-restaurantList.git
+ git clone https://github.com/thk61159/AC-urlShortcut.git
 ```
 2. 至MongoDB建立帳號並安裝MongoDB Atlas及Robo 3T
 MONGODB_URI=mongodb+srv://使用者帳號:使用者密碼@資料庫伺服器位置ip/你建立的資料庫名稱?retryWrites=true&w=majority
