@@ -3,10 +3,12 @@ const router = express.Router();
 const axios = require('axios');
 const shortUrl = require('../../models/shortcut');
 
-let originalUrl = '';
-let shotrcutUrl = '';
+
+
 
 router.get('/', (req, res) => {
+  let originalUrl = req.query.originalUrl
+  let shotrcutUrl = '';
   if (originalUrl) {
     shortUrl
       .find({ originalUrl: originalUrl })
@@ -14,11 +16,9 @@ router.get('/', (req, res) => {
       .then((e) => {
         let id = String(e[0]._id).slice(19, 24);
         if (e.length) {
-          shotrcutUrl = `http://localhost:3000/${id}`;
+        shotrcutUrl = `http://localhost:3000/${id}`;
         }
         res.render('index', { originalUrl, shotrcutUrl });
-        originalUrl = '';
-        shotrcutUrl = '';
       })
       .catch((err) => console.log('主頁渲染失敗', err));
   } else {
@@ -62,12 +62,11 @@ router.post('/', (req, res) => {
         })
         .catch((err) => console.log('重更頁面失敗'))
     )
-    .then(() => res.redirect('/')) //3.重更頁面
+    .then(() => res.redirect(`/?originalUrl=${originalUrl}`)) //3.重更頁面
     .catch((err) => {
       //如果是無法連線的網址render畫面提示錯誤
       let wrongUrl = 'wrongUrl';
-      res.render('index', { originalUrl, shotrcutUrl, wrongUrl });
-      originalUrl = '';
+      res.render('index', { originalUrl, wrongUrl });
       console.log('axios失敗', err);
     });
 });
