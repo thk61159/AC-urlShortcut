@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 const shortUrl = require('../../models/shortcut');
+const home = process.env.HOMEPAGE
 
 
 
@@ -17,7 +18,7 @@ router.get('/', (req, res) => {
         let id = String(e[0]._id).slice(19, 24);
        
         if (e.length) {
-        shotrcutUrl = `${process.env.HOME}${id}`
+        shotrcutUrl = `${home}${id}`
         }
         res.render('index', { originalUrl, shotrcutUrl });
       })
