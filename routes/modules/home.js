@@ -15,8 +15,9 @@ router.get('/', (req, res) => {
       .lean()
       .then((e) => {
         let id = String(e[0]._id).slice(19, 24);
+       
         if (e.length) {
-        shotrcutUrl = `http://localhost:3000/${id}`;
+        shotrcutUrl = `${process.env.Home}${id}`
         }
         res.render('index', { originalUrl, shotrcutUrl });
       })
