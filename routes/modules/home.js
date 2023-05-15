@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
         let id = String(e[0]._id).slice(19, 24);
        
         if (e.length) {
-        shotrcutUrl = `${process.env.Home}${id}`
+        shotrcutUrl = `${process.env.HOME}${id}`
         }
         res.render('index', { originalUrl, shotrcutUrl });
       })
